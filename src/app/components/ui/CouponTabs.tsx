@@ -60,7 +60,7 @@ export default function CouponTabs() {
         {coupons.map((coupon, index) => (
           <div
             key={index}
-            className="relative border border-dashed border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
+            className="relative border border-dashed  border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
           >
             {/* Scissors Icon */}
             <div className="absolute -top-2 -left-2 bg-white">

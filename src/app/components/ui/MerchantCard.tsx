@@ -1,3 +1,4 @@
+
 import React from "react";
 
 const MerchantCard = () => {
@@ -18,25 +19,25 @@ const MerchantCard = () => {
       name: "adidas",
       image: "/assets/addidas-logo.svg",
     },
-    {
-      name: "OOFOS",
-      image: '/assets/addidas-logo.svg', // Text-only
-    },
+    // {
+    //   name: "OOFOS",
+    //   image: '/assets/addidas-logo.svg', // Text-only
+    // },
   ];
 
   return (
     <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12">
       {/* Heading */}
-      <h2 className="text-3xl font-bold text-center text-gray-900 mb-10">
+      <h2 className="text-3xl font-bold text-center text-gray-900 mb-10" style={{ fontSize: "clamp(20px, 5vw, 51.2px)" }}>
         Our Favorite Merchants
       </h2>
 
       {/* Responsive Grid */}
-      <div className="grid grid-cols-2 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5 gap-12">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 xl:grid-cols-4 gap-4 m-auto">
         {merchants.map((merchant, index) => (
           <button
             key={index}
-            className="!w-[232px] !h-[120px] w-full min-h-[60px] sm:min-h-[80px] lg:min-h-[100px] bg-[#7FA842] flex items-center justify-center px-4 py-3 rounded-lg text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#8DC63F]"
+            className=" !h-[120px] w-full min-h-[60px] sm:min-h-[80px] lg:min-h-[100px] bg-[#7FA842] flex items-center justify-center px-4 py-3 rounded-lg text-white transition-all duration-300 ease-in-out transform hover:scale-105 hover:bg-[#8DC63F]"
           >
             <div className="flex items-center justify-center space-x-2">
               {merchant.image ? (

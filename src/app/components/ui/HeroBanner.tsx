@@ -40,7 +40,7 @@ export default function PromoSlider() {
             {/* Main Slider */}
             <div className="relative">
                 <div
-                    className="relative h-[500px] bg-cover bg-center"
+                    className="relative h-[400px] sm:h-[500px] bg-cover bg-center"
                     style={{
                         backgroundImage: "url('/assets/banner-img.png')",
                     }}
@@ -49,14 +49,16 @@ export default function PromoSlider() {
                     <div className="absolute inset-0 " />
 
                     {/* Content */}
-                    <div className="relative h-full flex items-center px-16">
+                    <div className="relative h-full flex items-center px-8 md:px-16">
                         {/* Text Content */}
                         <div className="max-w-xl text-white ml-10">
-                            <h1 className="text-[51.2px] font-bold leading-tight mb-4">
+                            <h1 className="font-bold leading-tight mb-4" style={{ fontSize: "clamp(24px, 5vw, 51.2px)" }}>
                                 {slides[currentSlide].title}
                             </h1>
-                            <p className="text-[30.93px] mb-8">{slides[currentSlide].subtitle}</p>
-                            <button className="bg-[#96C121] text-white px-8 py-3 hover:bg-[#86AD1E] transition-colors">
+                            <p className="mb-8" style={{ fontSize: "clamp(16px, 3vw, 30.93px)" }}>
+                                {slides[currentSlide].subtitle}
+                            </p>
+                            <button style={{ fontSize: "clamp(10px, 3vw, 22.93px)" }} className="bg-[#96C121] text-white px-4 py-3 hover:bg-[#86AD1E] transition-colors">
                                 {slides[currentSlide].buttonText}
                             </button>
                         </div>
@@ -67,13 +69,13 @@ export default function PromoSlider() {
                         onClick={prevSlide}
                         className="absolute left-4 top-1/2 -translate-y-1/2 bg-[#96C121] p-2"
                     >
-                        <IoIosArrowBack className="w-6 h-6 text-white" />
+                        <IoIosArrowBack className="md:w-6 md:h-6 text-white" />
                     </button>
                     <button
                         onClick={nextSlide}
                         className="absolute right-4 top-1/2 -translate-y-1/2 bg-[#96C121] p-2"
                     >
-                        <IoIosArrowForward className="w-6 h-6 text-white" />
+                        <IoIosArrowForward className="md:w-6 md:h-6 text-white" />
                     </button>
 
                     {/* Dots */}
@@ -82,8 +84,7 @@ export default function PromoSlider() {
                             <button
                                 key={index}
                                 onClick={() => setCurrentSlide(index)}
-                                className={`w-2 h-2 rounded-full ${currentSlide === index ? "bg-white" : "bg-white/50"
-                                    }`}
+                                className={`w-2 h-2 rounded-full ${currentSlide === index ? "bg-white" : "bg-white/50"}`}
                             />
                         ))}
                     </div>
@@ -94,7 +95,7 @@ export default function PromoSlider() {
             <div className="w-full h-0 bg-white"></div>
 
             {/* Promo Cards */}
-            <div className="bg-[#14303B] grid grid-cols-5 py-[10px]">
+            <div className="bg-[#14303B] grid grid-cols-2  sm:grid-cols-3 lg:grid-cols-5 py-[10px]">
                 {promoCards.map((card, index) => (
                     <div
                         key={index}
@@ -107,7 +108,6 @@ export default function PromoSlider() {
                     </div>
                 ))}
             </div>
-
         </div>
     )
 }

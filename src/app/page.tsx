@@ -21,10 +21,10 @@ export default function Home() {
    <Categories/>
    <FeaturedDeals/>
    <FavoriteDeal/>
-   <TopDealsSlider/>
+   {/* <TopDealsSlider/> */}
    <Blogs/>
    <FAQ/>
-   <Footer/>
+   {/* <Footer/> */}
    </>
   );
 }
