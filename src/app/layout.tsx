@@ -1,7 +1,14 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Geist, Geist_Mono, Montserrat } from "next/font/google"; // Import Montserrat
 import "./globals.css";
-import Container from "./components/ui/Container"; // Import Container
+import Navbar from "./components/ui/Navbar";
+import Footer from "./components/ui/Footer";
+
+const montserrat = Montserrat({
+  subsets: ["latin"],
+  weight: ["300", "400", "500", "600", "700"], // Choose required weights
+  variable: "--font-montserrat", // Creates a CSS variable
+});
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -24,13 +31,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={montserrat.variable}>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
-        {/* <Container> */}
-          {children}
-        {/* </Container> */}
+        <Navbar/>
+        {children}
+        <Footer/>
       </body>
     </html>
   );

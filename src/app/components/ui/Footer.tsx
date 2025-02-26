@@ -3,15 +3,15 @@ import { FaFacebook, FaInstagram, FaTwitter, FaLinkedin } from "react-icons/fa";
 
 const Footer = () => {
   return (
-    <footer className="bg-[#0A2730] text-white mt-28">
+    <footer className="bg-[#0A2730] text-white mt-28 max-w-[1400px] mx-auto">
       {/* Newsletter Section */}
       <div className="max-w-6xl mx-auto px-4 py-8 relative">
         <div className="bg-[#95C959]  p-6 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[calc(100%-2rem)]">
-          <h2 className="text-[58.9px] font-bold mb-2">Love to save?</h2>
-          <p className="text-[23px] mb-4">
+          <h2 className="text-[58.9px] font-bold mb-2" style={{ fontSize: "clamp(24px, 3vw, 58.9px)" }}>Love to save?</h2>
+          <p className="text-[23px] mb-4" style={{ fontSize: "clamp(16px, 1vw, 23px)" }}>
             Sign up for the free liveoffcoupons newsletter today! It's packed with the latest promo codes and top discounts.
           </p>
-          <div className="flex gap-4">
+          <div className="flex gap-4 flex-wrap">
             <input
               type="email"
               placeholder="Enter Your Email"

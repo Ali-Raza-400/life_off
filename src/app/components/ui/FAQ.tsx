@@ -34,14 +34,14 @@ const FAQItem: React.FC<{ item: FAQItem }> = ({ item }) => {
   const [isOpen, setIsOpen] = useState(false);
 
   return (
-    <div className="border-b border-gray-200">
+    <div className="border-b border-gray-200 ">
       <button
         className="w-full py-6 flex items-center justify-between text-left"
         onClick={() => setIsOpen(!isOpen)}
       >
-        <span className="text-lg font-medium text-gray-900">{item.question}</span>
+        <span className="text-[20px] font-medium text-gray-900" style={{ fontSize: "clamp(12px, 1vw, 20px)" }}>{item.question}</span>
         <BiPlus 
-          className={`w-6 h-6 text-gray-400 transform transition-transform duration-300 ${
+          className={`w-[21px] h-[21px] text-gray-400 transform transition-transform duration-300 ml-1 ${
             isOpen ? 'rotate-45' : 'rotate-0'
           }`}
         />
@@ -51,7 +51,7 @@ const FAQItem: React.FC<{ item: FAQItem }> = ({ item }) => {
           isOpen ? 'max-h-48 mb-6' : 'max-h-0'
         }`}
       >
-        <p className="text-gray-600">{item.answer}</p>
+        <p className="text-gray-600" style={{ fontSize: "clamp(14px, 1vw, 20px)" }}>{item.answer}</p>
       </div>
     </div>
   );
@@ -59,8 +59,8 @@ const FAQItem: React.FC<{ item: FAQItem }> = ({ item }) => {
 
 const FAQ: React.FC = () => {
   return (
-    <div className=" mx-auto px-4 py-12">
-      <h2 className="text-3xl font-bold text-gray-900 mb-8">
+    <div className=" mx-auto px-4 py-12 max-w-[1440px] mx-auto">
+      <h2 className="text-3xl font-bold text-gray-900 mb-2 md:mb-8" style={{ fontSize: "clamp(18px, 1vw, 30px)" }}>
         Frequently Asked Questions
       </h2>
       <div className="space-y-1">

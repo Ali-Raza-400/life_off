@@ -160,11 +160,9 @@
 
 
 
-import React, { useState } from 'react';
-import { BiShoppingBag } from 'react-icons/bi';
-// import { ChevronLeft, ChevronRight, ShoppingBag } from 'lucide-react';
+import React, { useState, useEffect } from "react";
 import { MdChevronLeft, MdChevronRight } from "react-icons/md";
-import { SiAliexpress } from 'react-icons/si';
+import { SiAliexpress } from "react-icons/si";
 
 interface Product {
   id: number;
@@ -178,31 +176,51 @@ const products: Product[] = [
     id: 1,
     name: "Crest 3D Whitestrips Sensitive At-Home Treatment",
     discount: "30% OFF",
-    image: "https://images.unsplash.com/photo-1612538498456-e861df91d4d0?auto=format&fit=crop&q=80&w=300&h=300"
+    image:
+      "https://images.unsplash.com/photo-1612538498456-e861df91d4d0?auto=format&fit=crop&q=80&w=300&h=300",
   },
   {
     id: 2,
-    name: "43\" Aliexpress Fire TV 4-Series 4K HDR Smart TV",
+    name: '43" Aliexpress Fire TV 4-Series 4K HDR Smart TV',
     discount: "35% OFF",
-    image: "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&q=80&w=300&h=300"
+    image:
+      "https://images.unsplash.com/photo-1593359677879-a4bb92f829d1?auto=format&fit=crop&q=80&w=300&h=300",
   },
   {
     id: 3,
     name: "Crest 3D Whitestrips Sensitive At-Home Kit",
     discount: "30% OFF",
-    image: "https://images.unsplash.com/photo-1628102491629-778571d893a3?auto=format&fit=crop&q=80&w=300&h=300"
+    image:
+      "https://images.unsplash.com/photo-1628102491629-778571d893a3?auto=format&fit=crop&q=80&w=300&h=300",
   },
   {
     id: 4,
     name: "Apple AirTag Tracker (4-Pack)",
     discount: "29% OFF",
-    image: "https://images.unsplash.com/photo-1633810542706-90e5ff7557be?auto=format&fit=crop&q=80&w=300&h=300"
-  }
+    image:
+      "https://images.unsplash.com/photo-1633810542706-90e5ff7557be?auto=format&fit=crop&q=80&w=300&h=300",
+  },
 ];
 
 function TopDealsSlider() {
   const [currentSlide, setCurrentSlide] = useState(0);
-  const slidesToShow = 3;
+  const [slidesToShow, setSlidesToShow] = useState(3);
+
+  useEffect(() => {
+    // Adjust slidesToShow based on screen width
+    const handleResize = () => {
+      if (window.innerWidth < 640) {
+        setSlidesToShow(1);
+      } else {
+        setSlidesToShow(3);
+      }
+    };
+
+    handleResize(); // Set initial value
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
   const totalSlides = Math.ceil(products.length / slidesToShow);
 
   const nextSlide = () => {
@@ -214,35 +232,56 @@ function TopDealsSlider() {
   };
 
   return (
-    <div className=" p-8">
+    <div className="md:p-8 p-4">
       <div className="max-w-7xl mx-auto">
         {/* Header Section */}
-        <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-4">
-            <div className="w-[179px] h-[179px] bg-[#ff4747] rounded-full flex items-center justify-center">
-              <SiAliexpress className="w-32 h-32 text-white" />
+        <div className="flex items-center justify-between md:mb-8 m-4">
+          <div className="flex items-center md:gap-4 gap-2">
+            <div
+              className="bg-[#ff4747] rounded-full flex items-center justify-center"
+              style={{
+                width: "clamp(100px, 6vw, 190px)",
+                height: "clamp(100px, 6vw, 190px)",
+              }}
+            >
+              <SiAliexpress className="w-2/3 h-2/3 text-white" />
             </div>
             <div>
-              <h1 className="text-2xl font-bold">Top Deals</h1>
-              <p className="text-gray-600">PRESENTED BY ALI EXPRESS</p>
+              <h1
+                className="text-2xl font-bold"
+                style={{ fontSize: "clamp(20px, 1vw, 30px)" }}
+              >
+                Top Deals
+              </h1>
+              <p
+                className="text-gray-600"
+                style={{ fontSize: "clamp(12px, 1vw, 17.23px)" }}
+              >
+                PRESENTED BY ALI EXPRESS
+              </p>
             </div>
           </div>
-          <button className="px-6 py-2 border-2 border-[#95c959] text-[#95c959] rounded-full hover:bg-[#95c959] hover:text-white transition-colors">
+          <button className="hidden md:block px-6 py-2 border-2 border-[#95c959] text-[#95c959] rounded-full hover:bg-[#95c959] hover:text-white transition-colors">
             View More Products
           </button>
         </div>
+        <button className="md:hidden px-6 py-2 mx-4 mb-4 border-2 border-[#95c959] text-[#95c959] rounded-full hover:bg-[#95c959] hover:text-white transition-colors">
+          View More Products
+        </button>
 
         {/* Products Slider */}
         <div className="relative">
-          <div className="overflow-hidden">
+          <div className="overflow-hidden md:overflow-hidden overflow-x-auto">
             <div
               className="flex transition-transform duration-300 ease-in-out"
-              style={{ transform: `translateX(-${currentSlide * (100 / slidesToShow)}%)` }}
+              style={{
+                transform: `translateX(-${currentSlide * (100 / slidesToShow)}%)`,
+              }}
             >
               {products.map((product) => (
                 <div
                   key={product.id}
-                  className="w-1/3 flex-shrink-0 px-4"
+                  className="w-full md:w-1/3 flex-shrink-0 px-4"
                 >
                   <div className="bg-white rounded-lg overflow-hidden shadow-md hover:shadow-lg transition-shadow">
                     <div className="flex h-[140px]">
@@ -267,7 +306,7 @@ function TopDealsSlider() {
                             </span>
                           </div>
                         </div>
-                        <button className="!w-[1/4] bg-[#95c959] text-white py-1.5 rounded text-sm font-medium hover:bg-[#86b84e] transition-colors">
+                        <button className="w-full bg-[#95c959] text-white py-1.5 rounded text-sm font-medium hover:bg-[#86b84e] transition-colors">
                           Check Price
                         </button>
                       </div>
@@ -279,18 +318,18 @@ function TopDealsSlider() {
           </div>
 
           {/* Navigation Buttons */}
-          {/* <button
+          <button
             onClick={prevSlide}
-            className="absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50"
+            className="hidden md:flex absolute left-0 top-1/2 -translate-y-1/2 -translate-x-4 w-10 h-10 bg-white rounded-full shadow-md items-center justify-center hover:bg-gray-50"
           >
             <MdChevronLeft className="w-6 h-6 text-gray-600" />
           </button>
           <button
             onClick={nextSlide}
-            className="absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-md flex items-center justify-center hover:bg-gray-50"
+            className="hidden md:flex absolute right-0 top-1/2 -translate-y-1/2 translate-x-4 w-10 h-10 bg-white rounded-full shadow-md items-center justify-center hover:bg-gray-50"
           >
             <MdChevronRight className="w-6 h-6 text-gray-600" />
-          </button> */}
+          </button>
 
           {/* Dots Navigation */}
           <div className="flex justify-center gap-2 mt-8">
@@ -298,10 +337,9 @@ function TopDealsSlider() {
               <button
                 key={index}
                 onClick={() => setCurrentSlide(index)}
-                className={`w-2 h-2 rounded-full transition-all ${currentSlide === index
-                    ? 'bg-[#95c959] w-8'
-                    : 'bg-gray-300'
-                  }`}
+                className={`w-2 h-2 rounded-full transition-all ${
+                  currentSlide === index ? "bg-[#95c959] w-8" : "bg-gray-300"
+                }`}
               />
             ))}
           </div>

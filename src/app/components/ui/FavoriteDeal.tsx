@@ -3,7 +3,7 @@ import React from 'react';
 const FavoriteDeal = () => {
   return (
     <div className="max-w-[1440px] mx-auto px-4 py-8 bg-[#7FA8421F] my-8">
-      <h2 className="text-[35px] font-bold text-center mb-8">Favorite Deal</h2>
+      <h2 className="text-[35px] font-bold text-center mb-8" style={{ fontSize: "clamp(24px, 5vw, 35px)" }}>Favorite Deal</h2>
 
       {/* Main Grid Container */}
       <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
@@ -28,11 +28,11 @@ const FavoriteDeal = () => {
                 className="w-full h-32 object-cover"
               />
             </div>
-            <div className="w-1/2 p-3 flex flex-col justify-between">
-              <span className="text-sm font-semibold text-black  px-2 py-1 rounded w-fit">
+            <div className="w-1/2 px-3 flex flex-col justify-center">
+              <span className=" font-semibold text-black   py-1 rounded w-fit" style={{ fontSize: "clamp(14px, 1vw, 20px)" }}>
                 TRAVEL DEALS & CASH BACK
               </span>
-              <p className="text-sm font-medium text-gray-800">What is Spring Savecation?</p>
+              <p className="text-sm font-medium text-gray-800" style={{ fontSize: "clamp(14px, 1vw, 20px)" }}>What is Spring Savecation?</p>
             </div>
           </div>
 
@@ -45,8 +45,8 @@ const FavoriteDeal = () => {
                 className="w-full h-32 object-cover"
               />
             </div>
-            <div className="w-1/2 p-3 flex flex-col justify-between">
-              <span className="text-sm font-semibold text-black  px-2 py-1 rounded w-fit">
+            <div className="w-1/2 px-3 flex flex-col justify-center" style={{ fontSize: "clamp(14px, 1vw, 20px)" }}>
+              <span className="text-sm font-semibold text-black  rounded w-fit">
                 WE TESTED IT!
               </span>
               <p className="text-sm font-medium text-gray-800">The Nespresso Coffee Maker to Buy</p>
@@ -62,8 +62,8 @@ const FavoriteDeal = () => {
                 className="w-full h-32 object-cover"
               />
             </div>
-            <div className="w-1/2 p-3 flex flex-col justify-between">
-              <span className="text-sm font-semibold text-black  px-2 pt-1 rounded w-fit">
+            <div className="w-1/2 px-3 flex flex-col justify-center">
+              <span className="text-sm font-semibold text-black   pt-1 rounded w-fit">
                 SHOPPING TIPS
               </span>
               <p className="text-sm font-medium text-gray-800">How to (Legally) Remove a Security Tag</p>
@@ -74,9 +74,9 @@ const FavoriteDeal = () => {
 
       {/* Bottom Content */}
       <div className="mt-6 text-center">
-        <span className="text-[30px] font-semibold text-[#96C121]">TRAVEL</span>
-        <h2 className="text-[30px] font-bold mt-2 mb-3">Spring Travel By the Numbers 2025</h2>
-        <p className="text-gray-600 text-[17.23px]">
+        <span className="text-[30px] font-semibold text-[#96C121]" style={{ fontSize: "clamp(24px, 1vw, 30px)" }}>TRAVEL</span>
+        <h2 className="text-[30px] font-bold mt-2 mb-3" style={{ fontSize: "clamp(22px, 1vw, 30px)" }}>Spring Travel By the Numbers 2025</h2>
+        <p className="text-gray-600 text-[17.23px]" style={{ fontSize: "clamp(14px, 1vw, 17.23px)" }}>
           Travelers kick off the season early to beat crowds & big with Spring Savecation
         </p>
       </div>

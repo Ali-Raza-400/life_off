@@ -55,12 +55,12 @@ export default function FeaturedDeals() {
   return (
     <div className="w-full">
       {/* Header */}
-      <div className="bg-[#7FA842] py-4 mb-8">
-        <h1 className="text-center text-white text-[35px] font-semibold">Fastest Growing Coupons & Deals Company</h1>
+      <div className="bg-[#7FA842] py-4 mb-8 px-2 md:px-0">
+        <h1 className="text-center text-white text-[35px] font-semibold" style={{ fontSize: "clamp(20px, 1vw, 35px)" }}>Fastest Growing Coupons & Deals Company</h1>
       </div>
 
       <div className="max-w-[1440px] mx-auto px-4">
-        <h2 className="text-[35px] font-bold mb-6">Trending Deals</h2>
+        <h2 className="text-[35px] font-bold mb-6" style={{ fontSize: "clamp(20px, 1vw, 35px)" }}>Trending Deals</h2>
 
         {/* Deals Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">

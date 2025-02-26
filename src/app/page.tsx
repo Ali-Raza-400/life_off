@@ -14,14 +14,14 @@ import Footer from "./components/ui/Footer";
 export default function Home() {
   return (
    <>
-   <Navbar/>
+   {/* <Navbar/> */}
    <HeroBanner/>
    <MerchantCard/>
    <CouponTabs/>
    <Categories/>
    <FeaturedDeals/>
    <FavoriteDeal/>
-   {/* <TopDealsSlider/> */}
+   <TopDealsSlider/>
    <Blogs/>
    <FAQ/>
    {/* <Footer/> */}
