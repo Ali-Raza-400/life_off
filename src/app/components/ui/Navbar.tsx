@@ -16,7 +16,7 @@ const Navbar = () => {
         {/* Rest of navbar with dark background */}
         <div className="flex-1 bg-[#14303B] flex items-center justify-between px-4 lg:px-8">
           {/* Center navigation (hidden on small screens) */}
-          <div className="hidden lg:flex items-center space-x-8">
+          <div className="flex-1 hidden lg:flex items-center w-[100%]  justify-center space-x-8">
             <NavLink href="#">Stores</NavLink>
             <NavLink href="#">Categories</NavLink>
             <NavLink href="#">Best Deals</NavLink>
@@ -24,7 +24,7 @@ const Navbar = () => {
           </div>
 
           {/* Right side - Search & Menu Toggle */}
-          <div className="flex items-center space-x-4 ml-auto">
+          <div className=" flex-2 flex items-center  space-x-4 ml-auto">
             {/* Search (hidden on small screens) */}
             <div className="hidden lg:flex relative">
               <input
