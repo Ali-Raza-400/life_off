@@ -26,7 +26,7 @@ const categories = [
     icon: <FaTshirt className="w-5 h-5" />,
     deals: [
       { logo: "/assets/qatar-logo.svg", offer: "Early 2025 Deals - Save 15% or More" },
-      { logo: "/assets/expedia-logo.svg", offer: "25% ( Or More!) Off You Dream Stay | Expedia Coupon" },
+      { logo: "/assets/expedia-logo.svg", offer: "25% ( Or More!) Off You Dream Stay " },
     ],
   },
   {
@@ -34,7 +34,7 @@ const categories = [
     icon: <FaHome className="w-5 h-5" />,
     deals: [
       { logo: "/assets/avis-logo.svg", offer: "Early 2025 Deals - Save 15% or More" },
-      { logo: "/assets/expedia-logo.svg", offer: "25% ( Or More!) Off You Dream Stay | Expedia Coupon" },
+      { logo: "/assets/expedia-logo.svg", offer: "25% ( Or More!) Off You Dream Stay " },
     ],
   },
   {
