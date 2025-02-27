@@ -25,7 +25,7 @@ export default function CouponTabs() {
     //     { id: 3, discount: "SALE", title: "25 Free Hours Of Streaming Video", expires: "1 Hour Today", verified: true },
     //     { id: 4, discount: "FROM $81", title: "Video Single Subjects Starting From $81", expires: "1 Hour Today", verified: true }
     // ]
-    const [expandedId, setExpandedId] = useState(null);
+    const [expandedId, setExpandedId] = useState<any>(null);
     const coupons = [
         {
             id: 1,
@@ -159,7 +159,7 @@ export default function CouponTabs() {
                                                     {/* See Details Button (Always Show) */}
                                                     <div
                                                         className="text-xs text-gray-600 flex items-center mt-4 pt-2 border-t cursor-pointer"
-                                                        onClick={() => setExpandedId(expandedId === coupon.id ? null : coupon.id)}
+                                                        onClick={() => setExpandedId(expandedId  === coupon.id  ? null : coupon.id)}
                                                     >
                                                         <span>See Details</span>
                                                         <span className="ml-1">{expandedId === coupon.id ? "−" : "+"}</span>
