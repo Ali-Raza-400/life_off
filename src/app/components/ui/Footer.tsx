@@ -6,7 +6,7 @@ const Footer = () => {
     <footer className="bg-[#0A2730] text-white mt-28 max-w-[1400px] mx-auto">
       {/* Newsletter Section */}
       <div className="max-w-6xl mx-auto px-4 py-8 relative">
-        <div className="bg-[#95C959]  p-6 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[calc(100%-2rem)]">
+        <div className="bg-[#95C959]  p-6 absolute left-1/2 -translate-x-1/2 -translate-y-1/2 w-full max-w-[calc(100%-2rem)] rounded-[10px]">
           <h2 className="text-[58.9px] font-bold mb-2" style={{ fontSize: "clamp(24px, 3vw, 58.9px)" }}>Love to save?</h2>
           <p className="text-[23px] mb-4" style={{ fontSize: "clamp(16px, 1vw, 23px)" }}>
             Sign up for the free liveoffcoupons newsletter today! It's packed with the latest promo codes and top discounts.
@@ -69,26 +69,27 @@ const Footer = () => {
 
         {/* Social Links & Copyright */}
         <div className="border-t border-gray-700 pt-6 flex flex-col md:flex-row justify-between items-center">
-          <div className="flex gap-4 mb-4 md:mb-0">
-            <a href="#" className="hover:text-[#95C959] transition-colors">
-              <FaFacebook className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[#95C959] transition-colors">
-              <FaInstagram className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[#95C959] transition-colors">
-              <FaTwitter className="w-5 h-5" />
-            </a>
-            <a href="#" className="hover:text-[#95C959] transition-colors">
-              <FaLinkedin className="w-5 h-5" />
-            </a>
-          </div>
-          <div className="text-sm text-gray-400 flex flex-wrap justify-center gap-2">
-            <span>Copyright 2024 LiveOff coupons. All rights reserved.</span>
-            <span>•</span>
-            <span>Made by</span>
-            <a href="#" className="text-[#95C959] hover:underline">Blackmoon</a>
-          </div>
+        <div className="flex gap-4 mb-4 md:mb-0">
+          <a href="#" className="hover:text-[#95C959] transition">
+            <img src="/assets/fb-logo.svg" alt="Facebook" className="w-6 h-6" />
+          </a>
+          <a href="#" className="hover:text-[#95C959] transition">
+            <img src="/assets/instagram-logo.svg" alt="Instagram" className="w-6 h-6" />
+          </a>
+          <a href="#" className="hover:text-[#95C959] transition">
+            <img src="/assets/linkedin-logo.svg" alt="LinkedIn" className="w-6 h-6" />
+          </a>
+          <a href="#" className="hover:text-[#95C959] transition">
+            <img src="/assets/twitter-logo.svg" alt="LinkedIn" className="w-6 h-6" />
+          </a>
+        </div>
+
+        <div className="text-sm text-gray-400 flex flex-wrap justify-center gap-4">
+          <span>Copyright 2025 Liveoffcoupons, All rights reserved</span>
+          <a href="#" className="hover:text-[#95C959]">T&Cs</a>
+          <a href="#" className="hover:text-[#95C959]">Privacy Policy</a>
+          <a href="#" className="hover:text-[#95C959]">Disclaimer</a>
+        </div>
         </div>
       </div>
     </footer>
