@@ -53,14 +53,14 @@ const coupons = [
 
 export default function CouponTabs() {
   return (
-    <div className="max-w-[1440px] mx-auto px-4 py-8">
-      <h2 className="text-2xl font-bold mb-6">Todays Offers and Coupons</h2>
+    <div className="max-w-[1440px] mx-auto px-4 pt-12">
+      <h2 className="text-2xl font-bold mb-10 md:text-start text-center  " style={{ fontSize: "clamp(20px, 2vw, 51.2px)" }}>Todays Offers and Coupons</h2>
 
       <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
         {coupons.map((coupon, index) => (
           <div
             key={index}
-            className="relative border border-dashed  border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
+            className="relative border border-dashed mx-6 sm:mx-0  border-gray-300 rounded-lg p-4 hover:shadow-lg transition-shadow cursor-pointer"
           >
             {/* Scissors Icon */}
             <div className="absolute -top-2 -left-2 bg-white">

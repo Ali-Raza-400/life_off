@@ -60,7 +60,7 @@ const FAQItem: React.FC<{ item: FAQItem }> = ({ item }) => {
 const FAQ: React.FC = () => {
   return (
     <div className=" mx-auto px-4 py-12 max-w-[1440px] mx-auto">
-      <h2 className="text-3xl font-bold text-gray-900 mb-2 md:mb-8" style={{ fontSize: "clamp(18px, 1vw, 30px)" }}>
+      <h2 className="text-3xl font-bold text-gray-900 mb-2 md:mb-8" style={{ fontSize: "clamp(20px, 2vw, 30px)" }}>
         Frequently Asked Questions
       </h2>
       <div className="space-y-1">

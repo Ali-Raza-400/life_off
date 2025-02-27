@@ -29,7 +29,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "Get Ready for Cooler Weather With the Best Winter Home Goods From Walmart",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   },
   {
     id: 2,
@@ -37,7 +37,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "The Walmart Deals Event is a great excuse to stock up on all the gear and accessories needed to build an awesome game room",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   },
   {
     id: 3,
@@ -45,7 +45,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "Get Ready for Cooler Weather With the Best Winter Home Goods From Walmart",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   },
   {
     id: 4,
@@ -53,7 +53,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "The Walmart Deals Event is a great excuse to stock up on all the gear and accessories needed to build an awesome game room",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   },
   {
     id: 5,
@@ -61,7 +61,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "Get Ready for Cooler Weather With the Best Winter Home Goods From Walmart",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   },
   {
     id: 6,
@@ -69,7 +69,7 @@ const blogPosts: BlogPost[] = [
     author: "Shannon Flynn",
     date: "October 22, 2025",
     description: "The Walmart Deals Event is a great excuse to stock up on all the gear and accessories needed to build an awesome game room",
-    image: "/assets/blog.svg"
+    image: "/assets/feature-img3.png"
   }
 ];
 
@@ -90,7 +90,7 @@ function Blogs() {
                 <img 
                   src={post.image}
                   alt={post.title}
-                  className="w-full h-full object-cover"
+                  className="w-full h-full object-cover rounded-[10px]"
                 />
               </div>
               

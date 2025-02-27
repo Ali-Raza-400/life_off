@@ -20,12 +20,12 @@ const FavoriteDeal = () => {
         {/* Right Side Grid - 1 column with 3 rows */}
         <div className="space-y-4">
           {/* Travel Deals Card */}
-          <div className="flex  rounded-lg overflow-hidden cursor-pointer group">
+          <div className="flex  cursor-pointer group">
             <div className="w-1/2">
               <img
                 src="/assets/feature-img2.png"
                 alt="Family traveling"
-                className="w-full h-32 object-cover"
+                className="w-full h-32 object-cover rounded-[10px]"
               />
             </div>
             <div className="w-1/2 px-3 flex flex-col justify-center">
@@ -42,7 +42,7 @@ const FavoriteDeal = () => {
               <img
                 src="/assets/feature-img3.png"
                 alt="Nespresso coffee maker"
-                className="w-full h-32 object-cover"
+                className="w-full h-32 object-cover rounded-[10px]"
               />
             </div>
             <div className="w-1/2 px-3 flex flex-col justify-center" style={{ fontSize: "clamp(14px, 1vw, 20px)" }}>
@@ -59,7 +59,7 @@ const FavoriteDeal = () => {
               <img
                 src="/assets/feature-img4.png"
                 alt="Security tag removal"
-                className="w-full h-32 object-cover"
+                className="w-full h-32 object-cover rounded-[10px]"
               />
             </div>
             <div className="w-1/2 px-3 flex flex-col justify-center">
