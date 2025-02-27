@@ -138,7 +138,7 @@ export default function Categories() {
                   />
                 </div>
                 {/* Right side - Offer Text with green border */}
-                <div className="flex-1 flex items-center border border-l-0 border-[#96C121] rounded-r-lg -ml-2 pl-4 pr-3 py-4">
+                <div className="flex-1 flex items-center border border-l-0 border-[#96C121] rounded-r-lg -ml-2 pl-4 pr-3 py-4 mt-[4px]">
                   <p className="text-sm text-gray-700" style={{ fontSize: "clamp(12px, 1vw, 18px)" }}>{deal.offer}</p>
                 </div>
               </div>
