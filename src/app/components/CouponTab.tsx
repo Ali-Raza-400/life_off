@@ -19,12 +19,7 @@ export default function CouponTabs() {
         }
     }
     const [showDetails, setShowDetails] = useState(false);
-    // const coupons = [
-    //     { id: 1, discount: "5%", title: "5% Military Discounts", expires: "Expires Today", verified: true },
-    //     { id: 2, discount: "SALE", title: "10 Months Payment Plan", expires: "1 Hour Today", verified: true },
-    //     { id: 3, discount: "SALE", title: "25 Free Hours Of Streaming Video", expires: "1 Hour Today", verified: true },
-    //     { id: 4, discount: "FROM $81", title: "Video Single Subjects Starting From $81", expires: "1 Hour Today", verified: true }
-    // ]
+
     const [expandedId, setExpandedId] = useState<any>(null);
     const coupons = [
         {
