@@ -17,20 +17,42 @@ export async function generateMetadata({
   const { slug } = resolvedParams
   
   try {
-    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://liveoffcoupon.com/api"
-    const res = await axios.get(`${apiUrl}/categories/slug/by/${slug}`)
+    // Use a direct URL to avoid any issues with environment variables
+    const apiUrl = "https://liveoffcoupon.com/api"
+    
+    // Add logging to debug
+    console.log(`Fetching metadata for slug: ${slug}`)
+    
+    // Use a timeout to ensure the request doesn't hang
+    const controller = new AbortController()
+    const timeoutId = setTimeout(() => controller.abort(), 5000)
+    
+    const res = await axios.get(`${apiUrl}/categories/slug/by/${slug}`, {
+      signal: controller.signal,
+      headers: {
+        'Cache-Control': 'no-cache',
+        'Pragma': 'no-cache'
+      }
+    })
+    
+    clearTimeout(timeoutId)
+    
     const data = res.data
     
-    // Ensure data exists before using it
-    if (!data) {
-      console.error("No data returned from API for slug:", slug)
+    // Log the data to see what we're getting
+    console.log('API Response data:', JSON.stringify(data).substring(0, 200) + '...')
+    
+    // Ensure data exists and has the required fields
+    if (!data || !data.slug) {
+      console.error("Invalid data returned from API for slug:", slug, data)
       return {
         title: "Category | LiveOffCoupon",
         description: "Find the best coupons and promo codes",
       }
     }
     
-    return {
+    // Create metadata with explicit fallbacks for each field
+    const metadata: Metadata = {
       title: data.categoryTitle || "Category | LiveOffCoupon",
       description: data.metaDescription || data.categoryDescription || "Find the best coupons and promo codes",
       openGraph: {
@@ -62,6 +84,11 @@ export async function generateMetadata({
         "google-site-verification": "jun25llOGzjnJpsoK3-Qvha-gL5rLMB73W68lVU-h6M",
       },
     }
+    
+    // Log the final metadata
+    console.log('Generated metadata:', JSON.stringify(metadata).substring(0, 200) + '...')
+    
+    return metadata
   } catch (error) {
     console.error("Error generating metadata:", error)
     return {
