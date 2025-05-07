@@ -1,58 +1,45 @@
-import type { Metadata } from "next"
+import type { Metadata, ResolvingMetadata } from 'next'
 import axios from "axios"
 import CategoryBanner from "@/app/components/category/categoryBanner"
 import CategoryCoupons from "@/app/components/category/CategoryCoupons"
 import { API_URL } from "@/app/components/utils/BASE_URL"
 
-// Define params as a Promise as expected by your Next.js 15 setup
-type Params = Promise<{ slug: string }>
+type Props = {
+  params: Promise<{ slug: string }>
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>
+}
 
-export async function generateMetadata({
-  params,
-}: {
-  params: Params
-}): Promise<Metadata> {
-  // Resolve the params Promise
-  const resolvedParams = await params
-  const { slug } = resolvedParams
+export async function generateMetadata(
+  { params, searchParams }: Props,
+  parent: ResolvingMetadata
+): Promise<Metadata> {
+  // Read route params
+  const { slug } = await params
   
   try {
-    // Use a direct URL to avoid any issues with environment variables
-    const apiUrl = "https://liveoffcoupon.com/api"
-    
-    // Add logging to debug
-    console.log(`Fetching metadata for slug: ${slug}`)
-    
-    // Use a timeout to ensure the request doesn't hang
-    const controller = new AbortController()
-    const timeoutId = setTimeout(() => controller.abort(), 5000)
-    
-    const res = await axios.get(`${apiUrl}/categories/slug/by/${slug}`, {
-      signal: controller.signal,
-      headers: {
-        'Cache-Control': 'no-cache',
-        'Pragma': 'no-cache'
-      }
-    })
-    
-    clearTimeout(timeoutId)
-    
+    // Fetch data
+    const apiUrl = process.env.NEXT_PUBLIC_API_URL || "https://liveoffcoupon.com/api"
+    const res = await axios.get(`${apiUrl}/categories/slug/by/${slug}`)
     const data = res.data
     
-    // Log the data to see what we're getting
-    console.log('API Response data:', JSON.stringify(data).substring(0, 200) + '...')
+    // Optionally access and extend parent metadata
+    const previousImages = (await parent).openGraph?.images || []
+    const previousDescription = (await parent).description || ''
     
-    // Ensure data exists and has the required fields
-    if (!data || !data.slug) {
-      console.error("Invalid data returned from API for slug:", slug, data)
+    // If no data is returned, use fallbacks
+    if (!data) {
       return {
         title: "Category | LiveOffCoupon",
-        description: "Find the best coupons and promo codes",
+        description: previousDescription || "Find the best coupons and promo codes",
       }
     }
     
-    // Create metadata with explicit fallbacks for each field
-    const metadata: Metadata = {
+    // Prepare image for OpenGraph
+    const ogImage = data.image 
+      ? [{ url: data.image, width: 1200, height: 630, alt: data.categoryName || "Category image" }, ...previousImages]
+      : [{ url: "https://liveoffcoupon.com/default.jpg", width: 1200, height: 630, alt: "LiveOffCoupon" }, ...previousImages]
+    
+    return {
       title: data.categoryTitle || "Category | LiveOffCoupon",
       description: data.metaDescription || data.categoryDescription || "Find the best coupons and promo codes",
       openGraph: {
@@ -60,14 +47,7 @@ export async function generateMetadata({
         description: data.metaDescription || data.categoryDescription || "Find the best coupons and promo codes",
         url: `https://liveoffcoupon.com/category/${data.slug}`,
         siteName: "LiveOffCoupon",
-        images: [
-          {
-            url: data.image || "https://liveoffcoupon.com/default.jpg",
-            width: 1200,
-            height: 630,
-            alt: data.categoryName || "Category image",
-          }
-        ],
+        images: ogImage,
         locale: "en_US",
         type: "website",
       },
@@ -75,7 +55,7 @@ export async function generateMetadata({
         card: "summary_large_image",
         title: data.categoryTitle || "Category | LiveOffCoupon",
         description: data.metaDescription || data.categoryDescription || "Find the best coupons and promo codes",
-        images: [data.image || "https://liveoffcoupon.com/default.jpg"],
+        images: data.image ? [data.image] : ["https://liveoffcoupon.com/default.jpg"],
       },
       alternates: {
         canonical: `https://liveoffcoupon.com/category/${data.slug}`,
@@ -84,25 +64,20 @@ export async function generateMetadata({
         "google-site-verification": "jun25llOGzjnJpsoK3-Qvha-gL5rLMB73W68lVU-h6M",
       },
     }
-    
-    // Log the final metadata
-    console.log('Generated metadata:', JSON.stringify(metadata).substring(0, 200) + '...')
-    
-    return metadata
   } catch (error) {
     console.error("Error generating metadata:", error)
+    // Fallback metadata in case of error
+    const previousDescription = (await parent).description || ''
     return {
       title: "Category | LiveOffCoupon",
-      description: "Find the best coupons and promo codes",
+      description: previousDescription || "Find the best coupons and promo codes",
     }
   }
 }
 
-// Keep using params as a Promise as expected by your setup
-export default async function CategoryPage({ params }: { params: Params }) {
-  // Resolve the params Promise
-  const resolvedParams = await params
-  const { slug } = resolvedParams
+export default async function CategoryPage({ params, searchParams }: Props) {
+  // Read route params
+  const { slug } = await params
 
   try {
     const res = await axios.get(`${API_URL}/categories/slug/by/${slug}`)
