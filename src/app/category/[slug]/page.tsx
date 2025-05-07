@@ -17,9 +17,9 @@ export async function generateMetadata({
   const resolvedParams = await params
   const { slug } = resolvedParams
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+  const API_URL = process.env.NEXT_PUBLIC_API_URL || "https://liveoffcoupon.com/api"
   const res = await axios.get(`${API_URL}/categories/slug/by/${slug}`)
-  const data = res.data?.list
+  const data = res.data
 
   return {
     title: data?.categoryTitle || "Women's Clothing Promo Codes & Coupons | LiveOffCoupon",
