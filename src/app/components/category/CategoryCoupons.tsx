@@ -4,6 +4,7 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import { convertToSecureUrl } from "../utils/convertToSecureUrl"
 import dynamic from "next/dynamic";
+import { API_URL } from "../utils/BASE_URL";
 const SafeHtml = dynamic(() => import('../utils/SafeHtml'), { ssr: false });
 
 
@@ -18,7 +19,6 @@ export default function CategoryCoupons({ data }: any) {
   // Fetch all categories using Axios
   const fetchCategories = async () => {
     try {
-          const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
       const response = await axios.get(`${API_URL}/categories/all`)  // Replace with your actual API endpoint
       setCategories(response.data)
       setCategoriesLoading(false)
@@ -33,7 +33,6 @@ export default function CategoryCoupons({ data }: any) {
     console.log("categoryId:::",categoryId);
     setIsLoading(true)
     try {
-         const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
       const response = await axios.get(`${API_URL}/categories/${categoryId}/coupons`) 
       console.log("response:::",response);
       // Replace with your actual API endpoint

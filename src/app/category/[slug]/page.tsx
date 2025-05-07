@@ -2,6 +2,7 @@ import type { Metadata } from "next"
 import axios from "axios"
 import CategoryBanner from "@/app/components/category/categoryBanner"
 import CategoryCoupons from "@/app/components/category/CategoryCoupons"
+import { API_URL } from "@/app/components/utils/BASE_URL"
 
 // Update the type to reflect that params is a Promise
 type Params = Promise<{ slug: string }>
@@ -45,7 +46,7 @@ export default async function CategoryPage({ params }: { params: Params }) {
   const resolvedParams = await params
   const { slug } = resolvedParams
 
-  const API_URL = process.env.NEXT_PUBLIC_API_URL || "http://localhost:3000"
+
   const res = await axios.get(`${API_URL}/categories/slug/by/${slug}`)
   const data = res.data
 
