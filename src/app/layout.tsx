@@ -3,6 +3,7 @@ import { Geist, Geist_Mono, Montserrat } from "next/font/google"; // Import Mont
 import "./globals.css";
 import Navbar from "./components/ui/Navbar";
 import Footer from "./components/ui/Footer";
+import { Toaster } from "react-hot-toast";
 
 const montserrat = Montserrat({
   subsets: ["latin"],
@@ -35,9 +36,10 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} antialiased`}
       >
-        <Navbar/>
+        <Toaster />
+        <Navbar />
         {children}
-        <Footer/>
+        <Footer />
       </body>
     </html>
   );
